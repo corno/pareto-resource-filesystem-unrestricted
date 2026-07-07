@@ -1,0 +1,75 @@
+import * as p_ from 'pareto-core/implementation/resource'
+import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
+
+//data types
+import * as d from "pareto-resources/interface/generated/liana/schemas/fs_unrestricted_chmod/data"
+
+//interface
+import * as resources from "pareto-resources/interface/resources"
+
+//dependencies
+import { chmod as fs_chmod } from "fs"
+import * as t_path_to_text from "pareto-resources/implementation/manual/transformers/unrestricted_path/text"
+
+export const $$: resources.filesystem_unrestricted.commands.chmod = p_.command(($p, on_success, on_error) => {
+    // Convert permissions structure to numeric mode
+    let mode = 0
+
+    // Special bits (optional)
+
+    const sb = $p.mode['special bits'].__get_raw()
+    if (sb !== null) {
+        if (sb[0].setuid) {
+            mode += 0o4000
+        }
+        if (sb[0].setgid) {
+            mode += 0o2000
+        }
+        if (sb[0].sticky) {
+            mode += 0o1000
+        }
+    }
+
+    // Owner, group, others
+
+    function permissions_to_octal(permissions: d.Permissions): number {
+        let value = 0
+        if (permissions.read) {
+            value += 4
+        }
+        if (permissions.write) {
+            value += 2
+        }
+        if (permissions.execute) {
+            value += 1
+        }
+        return value
+    }
+
+    mode += permissions_to_octal($p.mode.owner) * 0o100
+    mode += permissions_to_octal($p.mode.group) * 0o10
+    mode += permissions_to_octal($p.mode.others) * 0o1
+
+    fs_chmod(
+        t_path_to_text.Node_Path($p.path),
+        mode,
+        (err) => {
+            if (err) {
+                on_error({
+                    'path': $p.path,
+                    'type': p_change_context(null, () => {
+                        if (err.code === 'ENOENT') {
+                            return ['path does not exist', null]
+                        }
+                        if (err.code === 'EACCES' || err.code === 'EPERM') {
+                            return ['permission denied', null]
+                        }
+                        throw new Error(`unhandled fs.chmod error code: ${err.code}`)
+                    })
+                })
+            } else {
+                on_success()
+            }
+        }
+    )
+})
