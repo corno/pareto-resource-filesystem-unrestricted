@@ -1,6 +1,6 @@
 {
   "name": "pareto-resource-filesystem-unrestricted",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Corno",
   "license": "Apache-2.0",
   "description": "a library that implements the filesystem-unrestricted-api and thus provides filesystem functionality for pareto packages. use this resource if the sandboxed version is not sufficient for your needs. this resource is not sandboxed and thus has access to the entire filesystem.",
