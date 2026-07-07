@@ -5,13 +5,14 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 
 
 //interface
-import * as resources from "pareto-resources/interface/resources"
+import * as interface_ from "pareto-filesystem-unrestricted-api/interface/query_actions"
+
 
 //dependencies
-import * as t_path_to_text from "pareto-resources/implementation/manual/transformers/unrestricted_path/text"
+import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/unrestricted_path/text"
 import { readFile as fs_readFile } from "fs"
 
-export const $$: resources.filesystem_unrestricted.queries.read_file = p_.query(($p, on_value, on_error) => {
+export const $$: interface_.read_file = p_.query(($p, on_value, on_error) => {
     fs_readFile(
         t_path_to_text.Node_Path($p),
         { 'encoding': 'utf-8' },

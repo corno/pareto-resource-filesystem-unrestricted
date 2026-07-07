@@ -2,14 +2,15 @@ import * as p_ from 'pareto-core/implementation/resource'
 import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
 
 //interface
-import * as resources from "pareto-resources/interface/resources"
+import * as interface_ from "pareto-filesystem-unrestricted-api/interface/command_actions"
+
 
 //dependencies
 import { mkdir as fs_mkdir } from "fs"
 import { rm as fs_remove } from "fs"
-import * as t_path_to_text from "pareto-resources/implementation/manual/transformers/unrestricted_path/text"
+import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/unrestricted_path/text"
 
-export const $$: resources.filesystem_unrestricted.commands.make_directory = p_.command(($p, on_success, on_error) => {
+export const $$: interface_.make_directory = p_.command(($p, on_success, on_error) => {
     const make_directory = () => {
         fs_mkdir(
             t_path_to_text.Node_Path($p.path),

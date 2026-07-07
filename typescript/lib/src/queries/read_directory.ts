@@ -7,15 +7,16 @@ import p_unreachable_code_path from 'pareto-core/implementation/transformer/spec
 
 
 //interface
-import * as resources from "pareto-resources/interface/resources"
+import * as interface_ from "pareto-filesystem-unrestricted-api/interface/query_actions"
+
 
 //data types
-import * as d_xxx from "pareto-resources/interface/generated/liana/schemas/fs_unrestricted_read_directory/data"
+import * as d_xxx from "pareto-filesystem-unrestricted-api/interface/generated/liana/schemas/fs_unrestricted_read_directory/data"
 
 //dependencies
 import { readdir as fs_readdir } from "fs"
-import * as t_path_to_text from "pareto-resources/implementation/manual/transformers/unrestricted_path/text"
-import * as t_path_to_path from "pareto-resources/implementation/manual/transformers/unrestricted_path/unrestricted_path"
+import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/unrestricted_path/text"
+import * as t_path_to_path from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/unrestricted_path/unrestricted_path"
 
 type ID_Value_Pair<T extends p_di.Value> = {
     readonly 'id': string
@@ -23,7 +24,7 @@ type ID_Value_Pair<T extends p_di.Value> = {
 }
 
 
-export const $$: resources.filesystem_unrestricted.queries.read_directory = p_.query(($p, on_value, on_error) => {
+export const $$: interface_.read_directory = p_.query(($p, on_value, on_error) => {
     fs_readdir(
         t_path_to_text.Context_Path($p.path),
         {

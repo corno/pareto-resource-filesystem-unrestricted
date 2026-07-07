@@ -2,13 +2,14 @@ import * as p_ from 'pareto-core/implementation/resource'
 import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
 
 //interface
-import * as resources from "pareto-resources/interface/resources"
+import * as interface_ from "pareto-filesystem-unrestricted-api/interface/command_actions"
+
 
 //dependencies
 import { cp as fs_cp } from "fs"
-import * as t_path_to_text from "pareto-resources/implementation/manual/transformers/unrestricted_path/text"
+import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/unrestricted_path/text"
 
-export const $$: resources.filesystem_unrestricted.commands.copy = p_.command(($p, on_success, on_error) => {
+export const $$: interface_.copy = p_.command(($p, on_success, on_error) => {
     const options: any = {}
     if ($p.options.recursive) {
         options.recursive = true
