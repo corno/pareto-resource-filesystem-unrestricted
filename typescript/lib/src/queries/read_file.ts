@@ -5,7 +5,7 @@ import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_f
 
 
 //interface
-import * as interface_ from "pareto-filesystem-unrestricted-api/interface/query_actions"
+import * as interface_ from "pareto-filesystem-unrestricted-api/interface/queries"
 
 
 //dependencies

@@ -3,7 +3,7 @@ import p_change_context from 'pareto-core/implementation/refiner/specials/change
 
 
 //interface
-import * as interface_ from "pareto-filesystem-unrestricted-api/interface/query_actions"
+import * as interface_ from "pareto-filesystem-unrestricted-api/interface/queries"
 
 
 //dependencies

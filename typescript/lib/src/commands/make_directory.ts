@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/implementation/resource'
 import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
 
 //interface
-import * as interface_ from "pareto-filesystem-unrestricted-api/interface/command_actions"
+import * as interface_ from "pareto-filesystem-unrestricted-api/interface/commands"
 
 
 //dependencies

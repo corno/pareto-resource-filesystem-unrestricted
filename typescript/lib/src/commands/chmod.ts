@@ -5,7 +5,7 @@ import p_change_context from 'pareto-core/implementation/refiner/specials/change
 import * as d from "pareto-filesystem-unrestricted-api/interface/generated/liana/schemas/fs_unrestricted_chmod/data"
 
 //interface
-import * as interface_ from "pareto-filesystem-unrestricted-api/interface/command_actions"
+import * as interface_ from "pareto-filesystem-unrestricted-api/interface/commands"
 
 
 //dependencies

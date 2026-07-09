@@ -7,7 +7,7 @@ import p_unreachable_code_path from 'pareto-core/implementation/transformer/spec
 
 
 //interface
-import * as interface_ from "pareto-filesystem-unrestricted-api/interface/query_actions"
+import * as interface_ from "pareto-filesystem-unrestricted-api/interface/queries"
 
 
 //data types

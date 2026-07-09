@@ -3,7 +3,7 @@ import p_change_context from 'pareto-core/implementation/refiner/specials/change
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
 //interface
-import * as interface_ from "pareto-filesystem-unrestricted-api/interface/command_actions"
+import * as interface_ from "pareto-filesystem-unrestricted-api/interface/commands"
 
 
 //dependencies
