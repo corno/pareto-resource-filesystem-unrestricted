@@ -2,7 +2,7 @@ import * as p_ from 'pareto-core/implementation/resource'
 import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
 
 //data types
-import * as d from "pareto-filesystem-unrestricted-api/interface/generated/liana/schemas/fs_unrestricted_chmod/data"
+import * as d from "pareto-filesystem-unrestricted-api/interface/data/fs_unrestricted_chmod"
 
 //interface
 import * as interface_ from "pareto-filesystem-unrestricted-api/interface/commands"
@@ -10,7 +10,7 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/interface/comman
 
 //dependencies
 import { chmod as fs_chmod } from "fs"
-import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/unrestricted_path/text"
+import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/text"
 
 export const $$: interface_.chmod = p_.command(($p, on_success, on_error) => {
     // Convert permissions structure to numeric mode

@@ -11,12 +11,12 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/interface/querie
 
 
 //data types
-import * as d_xxx from "pareto-filesystem-unrestricted-api/interface/generated/liana/schemas/fs_unrestricted_read_directory/data"
+import * as d_xxx from "pareto-filesystem-unrestricted-api/interface/data/fs_unrestricted_read_directory"
 
 //dependencies
 import { readdir as fs_readdir } from "fs"
-import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/unrestricted_path/text"
-import * as t_path_to_path from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/unrestricted_path/unrestricted_path"
+import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/text"
+import * as t_path_to_path from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/unrestricted_path"
 
 type ID_Value_Pair<T extends p_di.Value> = {
     readonly 'id': string

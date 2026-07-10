@@ -9,7 +9,7 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/interface/querie
 
 
 //dependencies
-import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/unrestricted_path/text"
+import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/text"
 import { readFile as fs_readFile } from "fs"
 
 export const $$: interface_.read_file = p_.query(($p, on_value, on_error) => {

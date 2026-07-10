@@ -7,7 +7,7 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/interface/comman
 
 //dependencies
 import { cp as fs_cp } from "fs"
-import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/unrestricted_path/text"
+import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/text"
 
 export const $$: interface_.copy = p_.command(($p, on_success, on_error) => {
     const options: any = {}

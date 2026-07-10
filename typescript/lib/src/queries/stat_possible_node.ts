@@ -7,7 +7,7 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/interface/querie
 
 //dependencies
 import { stat as fs_stat } from "fs"
-import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/unrestricted_path/text"
+import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/text"
 
 export const $$: interface_.stat_possible_node = p_.query(($p, on_value, on_error) => {
     fs_stat(

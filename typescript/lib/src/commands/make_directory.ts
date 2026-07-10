@@ -8,7 +8,7 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/interface/comman
 //dependencies
 import { mkdir as fs_mkdir } from "fs"
 import { rm as fs_remove } from "fs"
-import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/manual/transformers/unrestricted_path/text"
+import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/text"
 
 export const $$: interface_.make_directory = p_.command(($p, on_success, on_error) => {
     const make_directory = () => {
