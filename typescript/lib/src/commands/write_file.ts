@@ -1,4 +1,5 @@
 import * as p_ from 'pareto-core/implementation/resource'
+import * as p_s from 'pareto-core/implementation/serializer'
 import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
 import p_text_from_list from 'pareto-core/implementation/transformer/specials/text_from_list'
 
@@ -8,12 +9,16 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/interface/comman
 
 //dependencies
 import { mkdir as fs_mkdir, writeFile as fs_writeFile } from "fs"
-import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/text"
+import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/serializers/unrestricted_path"
 
 export const $$: interface_.write_file = p_.command(($p, on_success, on_error) => {
 
     fs_mkdir(
-        t_path_to_text.Context_Path($p.path.context),
+        p_s.text_from_phrase(
+            ser_path.Context_Path($p.path.context),
+            "",
+            "\n"
+        ),
         {
             'recursive': true
         },
@@ -31,7 +36,11 @@ export const $$: interface_.write_file = p_.command(($p, on_success, on_error) =
                 return
             }
             fs_writeFile(
-                t_path_to_text.Node_Path($p.path),
+                p_s.text_from_phrase(
+                    ser_path.Node_Path($p.path),
+                    "",
+                    "\n"
+                ),
                 p_text_from_list($p.data, ($) => $),
                 (err) => {
                     if (err) {

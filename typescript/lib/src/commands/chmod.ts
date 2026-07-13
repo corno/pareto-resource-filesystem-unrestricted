@@ -1,8 +1,9 @@
 import * as p_ from 'pareto-core/implementation/resource'
 import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
+import * as p_s from 'pareto-core/implementation/serializer'
 
 //data types
-import * as d from "pareto-filesystem-unrestricted-api/interface/data/fs_unrestricted_chmod"
+import * as d from "pareto-filesystem-unrestricted-api/interface/schemas/fs_unrestricted_chmod"
 
 //interface
 import * as interface_ from "pareto-filesystem-unrestricted-api/interface/commands"
@@ -10,7 +11,8 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/interface/comman
 
 //dependencies
 import { chmod as fs_chmod } from "fs"
-import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/text"
+
+import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/serializers/unrestricted_path"
 
 export const $$: interface_.chmod = p_.command(($p, on_success, on_error) => {
     // Convert permissions structure to numeric mode
@@ -52,7 +54,11 @@ export const $$: interface_.chmod = p_.command(($p, on_success, on_error) => {
     mode += permissions_to_octal($p.mode.others) * 0o1
 
     fs_chmod(
-        t_path_to_text.Node_Path($p.path),
+        p_s.text_from_phrase(
+            ser_path.Node_Path($p.path),
+            "",
+            "\n"
+        ),
         mode,
         (err) => {
             if (err) {

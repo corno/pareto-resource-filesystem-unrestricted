@@ -1,5 +1,6 @@
 import * as p_ from 'pareto-core/implementation/resource'
 import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
+import * as p_s from 'pareto-core/implementation/serializer'
 
 //interface
 import * as interface_ from "pareto-filesystem-unrestricted-api/interface/commands"
@@ -7,7 +8,7 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/interface/comman
 
 //dependencies
 import { cp as fs_cp } from "fs"
-import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/text"
+import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/serializers/unrestricted_path"
 
 export const $$: interface_.copy = p_.command(($p, on_success, on_error) => {
     const options: any = {}
@@ -22,8 +23,16 @@ export const $$: interface_.copy = p_.command(($p, on_success, on_error) => {
     }
 
     fs_cp(
-        t_path_to_text.Node_Path($p.source),
-        t_path_to_text.Node_Path($p.target),
+        p_s.text_from_phrase(
+            ser_path.Node_Path($p.source),
+            "",
+            "\n"
+        ),
+        p_s.text_from_phrase(
+            ser_path.Node_Path($p.target),
+            "",
+            "\n"
+        ),
         options,
         (err) => {
             if (err) {

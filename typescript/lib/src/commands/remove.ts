@@ -1,17 +1,22 @@
 import * as p_ from 'pareto-core/implementation/resource'
 import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
+import * as p_s from 'pareto-core/implementation/serializer'
 
 //interface
 import * as interface_ from "pareto-filesystem-unrestricted-api/interface/commands"
 
 //dependencies
 import { rm as fs_rm } from "fs"
-import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/text"
+import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/serializers/unrestricted_path"
 
 
 export const $$: interface_.remove = p_.command(($p, on_success, on_error) => {
     fs_rm(
-        t_path_to_text.Context_Path($p.path),
+        p_s.text_from_phrase(
+            ser_path.Context_Path($p.path),
+            "",
+            "\n"
+        ),
         {
             'recursive': true,
         },
@@ -31,7 +36,11 @@ export const $$: interface_.remove = p_.command(($p, on_success, on_error) => {
                                 return ['permission denied', null]
                             }
                             if (err.code === 'ENOTDIR') {
-                                throw new Error(`FIXME: implement ENOTDIR error handling (path: ${t_path_to_text.Context_Path($p.path)})`)
+                                throw new Error(`FIXME: implement ENOTDIR error handling (path: ${p_s.text_from_phrase(
+                                    ser_path.Context_Path($p.path),
+                                    "",
+                                    "\n"
+                                )})`)
                             }
                             throw new Error(`unhandled fs.rm error code: ${err.code}`)
                         })

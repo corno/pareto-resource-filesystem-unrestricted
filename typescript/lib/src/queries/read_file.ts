@@ -2,6 +2,7 @@
 import * as p_ from 'pareto-core/implementation/resource'
 import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
 import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
+import * as p_s from 'pareto-core/implementation/serializer'
 
 
 //interface
@@ -9,12 +10,16 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/interface/querie
 
 
 //dependencies
-import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/text"
+import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/serializers/unrestricted_path"
 import { readFile as fs_readFile } from "fs"
 
 export const $$: interface_.read_file = p_.query(($p, on_value, on_error) => {
     fs_readFile(
-        t_path_to_text.Node_Path($p),
+        p_s.text_from_phrase(
+            ser_path.Node_Path($p),
+            "",
+            "\n"
+        ),
         { 'encoding': 'utf-8' },
         (err, data) => {
             if (err) {

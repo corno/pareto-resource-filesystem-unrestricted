@@ -1,5 +1,6 @@
 import * as p_ from 'pareto-core/implementation/resource'
 import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
+import * as p_s from 'pareto-core/implementation/serializer'
 
 
 //interface
@@ -8,11 +9,15 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/interface/querie
 
 //dependencies
 import { stat as fs_stat } from "fs"
-import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/text"
+import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/serializers/unrestricted_path"
 
 export const $$: interface_.stat = p_.query(($p, on_value, on_error) => {
     fs_stat(
-        t_path_to_text.Node_Path($p),
+        p_s.text_from_phrase(
+            ser_path.Node_Path($p),
+            "",
+            "\n"
+        ),
         (err, stats) => {
             if (err) {
                 on_error({

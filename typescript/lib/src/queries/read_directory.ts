@@ -1,5 +1,6 @@
 import * as p_ from 'pareto-core/implementation/resource'
 import * as p_r from 'pareto-core/implementation/refiner'
+import * as p_s from 'pareto-core/implementation/serializer'
 import * as p_di from 'pareto-core/interface/data'
 import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
 
@@ -11,11 +12,11 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/interface/querie
 
 
 //data types
-import * as d_xxx from "pareto-filesystem-unrestricted-api/interface/data/fs_unrestricted_read_directory"
+import * as d_xxx from "pareto-filesystem-unrestricted-api/interface/schemas/fs_unrestricted_read_directory"
 
 //dependencies
 import { readdir as fs_readdir } from "fs"
-import * as t_path_to_text from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/text"
+import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/serializers/unrestricted_path"
 import * as t_path_to_path from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/unrestricted_path"
 
 type ID_Value_Pair<T extends p_di.Value> = {
@@ -26,7 +27,11 @@ type ID_Value_Pair<T extends p_di.Value> = {
 
 export const $$: interface_.read_directory = p_.query(($p, on_value, on_error) => {
     fs_readdir(
-        t_path_to_text.Context_Path($p.path),
+        p_s.text_from_phrase(
+            ser_path.Context_Path($p.path),
+            "",
+            "\n"
+        ),
         {
             'encoding': 'utf-8',
             'withFileTypes': true,
