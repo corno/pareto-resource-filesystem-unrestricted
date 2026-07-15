@@ -12,11 +12,7 @@ import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/ser
 
 export const $$: interface_.remove = p_.command(($p, on_success, on_error) => {
     fs_rm(
-        p_s.text_from_phrase(
-            ser_path.Context_Path($p.path),
-            "",
-            "\n"
-        ),
+        ser_path.Context_Path($p.path),
         {
             'recursive': true,
         },
@@ -36,11 +32,7 @@ export const $$: interface_.remove = p_.command(($p, on_success, on_error) => {
                                 return ['permission denied', null]
                             }
                             if (err.code === 'ENOTDIR') {
-                                throw new Error(`FIXME: implement ENOTDIR error handling (path: ${p_s.text_from_phrase(
-                                    ser_path.Context_Path($p.path),
-                                    "",
-                                    "\n"
-                                )})`)
+                                throw new Error(`FIXME: implement ENOTDIR error handling (path: ${ser_path.Context_Path($p.path)})`)
                             }
                             throw new Error(`unhandled fs.rm error code: ${err.code}`)
                         })

@@ -14,11 +14,7 @@ import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/ser
 export const $$: interface_.make_directory = p_.command(($p, on_success, on_error) => {
     const make_directory = () => {
         fs_mkdir(
-            p_s.text_from_phrase(
-                ser_path.Node_Path($p.path),
-                "",
-                "\n"
-            ),
+            ser_path.Node_Path($p.path),
             {
                 'recursive': true,
             },
@@ -41,11 +37,7 @@ export const $$: interface_.make_directory = p_.command(($p, on_success, on_erro
     }
     if ($p['delete existing']) {
         fs_remove(
-            p_s.text_from_phrase(
-                ser_path.Node_Path($p.path),
-                "",
-                "\n"
-            ),
+            ser_path.Node_Path($p.path),
             {
                 'recursive': true,
                 'force': true,

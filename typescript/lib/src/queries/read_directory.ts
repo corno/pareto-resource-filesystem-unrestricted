@@ -27,11 +27,7 @@ type ID_Value_Pair<T extends p_di.Value> = {
 
 export const $$: interface_.read_directory = p_.query(($p, on_value, on_error) => {
     fs_readdir(
-        p_s.text_from_phrase(
-            ser_path.Context_Path($p.path),
-            "",
-            "\n"
-        ),
+        ser_path.Context_Path($p.path),
         {
             'encoding': 'utf-8',
             'withFileTypes': true,

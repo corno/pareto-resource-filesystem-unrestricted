@@ -11,11 +11,7 @@ import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/ser
 
 export const $$: interface_.stat_possible_node = p_.query(($p, on_value, on_error) => {
     fs_stat(
-        p_s.text_from_phrase(
-            ser_path.Node_Path($p),
-            "",
-            "\n"
-        ),
+        ser_path.Node_Path($p),
         (err, stats) => {
             if (err) {
                 if (err.code === 'ENOENT') {

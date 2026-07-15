@@ -54,11 +54,7 @@ export const $$: interface_.chmod = p_.command(($p, on_success, on_error) => {
     mode += permissions_to_octal($p.mode.others) * 0o1
 
     fs_chmod(
-        p_s.text_from_phrase(
-            ser_path.Node_Path($p.path),
-            "",
-            "\n"
-        ),
+        ser_path.Node_Path($p.path),
         mode,
         (err) => {
             if (err) {

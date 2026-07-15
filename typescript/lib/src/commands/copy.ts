@@ -23,16 +23,8 @@ export const $$: interface_.copy = p_.command(($p, on_success, on_error) => {
     }
 
     fs_cp(
-        p_s.text_from_phrase(
-            ser_path.Node_Path($p.source),
-            "",
-            "\n"
-        ),
-        p_s.text_from_phrase(
-            ser_path.Node_Path($p.target),
-            "",
-            "\n"
-        ),
+        ser_path.Node_Path($p.source),
+        ser_path.Node_Path($p.target),
         options,
         (err) => {
             if (err) {

@@ -1,7 +1,6 @@
 
 import * as p_ from 'pareto-core/implementation/resource'
 import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
-import p_list_from_text from 'pareto-core/implementation/refiner/specials/list_from_text'
 import * as p_s from 'pareto-core/implementation/serializer'
 
 
@@ -15,11 +14,7 @@ import { readFile as fs_readFile } from "fs"
 
 export const $$: interface_.read_file = p_.query(($p, on_value, on_error) => {
     fs_readFile(
-        p_s.text_from_phrase(
-            ser_path.Node_Path($p),
-            "",
-            "\n"
-        ),
+        ser_path.Node_Path($p),
         { 'encoding': 'utf-8' },
         (err, data) => {
             if (err) {
@@ -45,10 +40,9 @@ export const $$: interface_.read_file = p_.query(($p, on_value, on_error) => {
                     })
                 })
             } else {
-                on_value(p_list_from_text(
-                    data,
-                    ($) => $
-                ))
+                on_value({
+                    'data': p_.literal.list(Array.from(data).map(c => c.codePointAt(0)!))
+                })
             }
         }
     )
