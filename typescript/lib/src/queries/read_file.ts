@@ -5,11 +5,11 @@ import * as p_s from 'pareto-core/implementation/serializer'
 
 
 //interface
-import * as interface_ from "pareto-filesystem-unrestricted-api/interface/queries"
+import * as interface_ from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/queries"
 
 
 //dependencies
-import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/serializers/unrestricted_path"
+import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/unrestricted_path"
 import { readFile as fs_readFile } from "fs"
 
 export const $$: interface_.read_file = p_.query(($p, on_value, on_error) => {

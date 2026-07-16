@@ -3,11 +3,11 @@ import p_change_context from 'pareto-core/implementation/refiner/specials/change
 import * as p_s from 'pareto-core/implementation/serializer'
 
 //interface
-import * as interface_ from "pareto-filesystem-unrestricted-api/interface/commands"
+import * as interface_ from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/commands"
 
 //dependencies
 import { rm as fs_rm } from "fs"
-import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/serializers/unrestricted_path"
+import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/unrestricted_path"
 
 
 export const $$: interface_.remove = p_.command(($p, on_success, on_error) => {

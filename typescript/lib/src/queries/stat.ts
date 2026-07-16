@@ -4,12 +4,12 @@ import * as p_s from 'pareto-core/implementation/serializer'
 
 
 //interface
-import * as interface_ from "pareto-filesystem-unrestricted-api/interface/queries"
+import * as interface_ from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/queries"
 
 
 //dependencies
 import { stat as fs_stat } from "fs"
-import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/serializers/unrestricted_path"
+import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/unrestricted_path"
 
 export const $$: interface_.stat = p_.query(($p, on_value, on_error) => {
     fs_stat(

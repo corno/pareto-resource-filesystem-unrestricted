@@ -8,16 +8,16 @@ import p_unreachable_code_path from 'pareto-core/implementation/transformer/spec
 
 
 //interface
-import * as interface_ from "pareto-filesystem-unrestricted-api/interface/queries"
+import * as interface_ from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/queries"
 
 
 //data types
-import * as d_xxx from "pareto-filesystem-unrestricted-api/interface/schemas/fs_unrestricted_read_directory"
+import * as d_xxx from "pareto-filesystem-unrestricted-api/modules/unrestricted/interface/schemas/read_directory"
 
 //dependencies
 import { readdir as fs_readdir } from "fs"
-import * as ser_path from "pareto-filesystem-unrestricted-api/implementation/serializers/unrestricted_path"
-import * as t_path_to_path from "pareto-filesystem-unrestricted-api/implementation/transformers/unrestricted_path/unrestricted_path"
+import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/unrestricted_path"
+import * as t_path_to_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/transformers/path/path"
 
 type ID_Value_Pair<T extends p_di.Value> = {
     readonly 'id': string
