@@ -51,7 +51,7 @@ export const $$: interface_.write_file = p_.command(($p, on_success, on_error) =
             const lines = $p.content.lines.__get_raw()
             for (let i = 0; i < lines.length; i++) {
                 stream.write(lines[i])
-                stream.write($p.content.newline)
+                stream.write($p.content.parameters.newline)
             }
             stream.end()
         }
