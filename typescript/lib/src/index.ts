@@ -1,15 +1,15 @@
 import * as p_ from 'pareto-core/interface/resource'
 
-import { $$ as p_fs_unrestricted_chmod } from "./commands/chmod.js"
-import { $$ as p_fs_unrestricted_copy } from "./commands/copy.js"
-import { $$ as p_fs_unrestricted_make_directory } from "./commands/make_directory.js"
-import { $$ as p_fs_unrestricted_remove } from "./commands/remove.js"
-import { $$ as p_fs_unrestricted_write_file } from "./commands/write_file.js"
+import { $$ as p_fs_unrestricted_chmod } from "./commands/implementations/chmod.js"
+import { $$ as p_fs_unrestricted_copy } from "./commands/implementations/copy.js"
+import { $$ as p_fs_unrestricted_make_directory } from "./commands/implementations/make_directory.js"
+import { $$ as p_fs_unrestricted_remove } from "./commands/implementations/remove.js"
+import { $$ as p_fs_unrestricted_write_file } from "./commands/implementations/write_file.js"
 
-import { $$ as q_fs_unrestricted_read_directory } from "./queries/read_directory.js"
-import { $$ as q_fs_unrestricted_read_file } from "./queries/read_file.js"
+import { $$ as q_fs_unrestricted_read_directory } from "./queries/implementations/read_directory.js"
+import { $$ as q_fs_unrestricted_read_file } from "./queries/implementations/read_file.js"
 // import { $$ as q_fs_unrestricted_stat } from "./queries/stat.js"
-import { $$ as q_fs_unrestricted_stat_possible_node } from "./queries/stat_possible_node.js"
+import { $$ as q_fs_unrestricted_stat_possible_node } from "./queries/implementations/stat_possible_node.js"
 
 export const $ = {
     'commands': {
