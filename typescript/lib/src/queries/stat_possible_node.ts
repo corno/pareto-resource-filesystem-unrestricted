@@ -7,7 +7,7 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/modules/unrestri
 
 //dependencies
 import { stat as fs_stat } from "fs"
-import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/unrestricted_path"
+import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/path"
 
 export const $$: interface_.stat_possible_node = p_.query(($p, on_value, on_error) => {
     fs_stat(

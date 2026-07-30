@@ -9,7 +9,7 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/modules/unrestri
 //dependencies
 import { mkdir as fs_mkdir } from "fs"
 import { rm as fs_remove } from "fs"
-import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/unrestricted_path"
+import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/path"
 
 export const $$: interface_.make_directory = p_.command(($p, on_success, on_error) => {
     const make_directory = () => {

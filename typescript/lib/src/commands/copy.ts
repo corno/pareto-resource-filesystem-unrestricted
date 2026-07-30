@@ -8,7 +8,7 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/modules/unrestri
 
 //dependencies
 import { cp as fs_cp } from "fs"
-import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/unrestricted_path"
+import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/path"
 
 export const $$: interface_.copy = p_.command(($p, on_success, on_error) => {
     const options: any = {}

@@ -12,7 +12,7 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/modules/unrestri
 //dependencies
 import { chmod as fs_chmod } from "fs"
 
-import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/unrestricted_path"
+import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/path"
 
 export const $$: interface_.chmod = p_.command(($p, on_success, on_error) => {
     // Convert permissions structure to numeric mode

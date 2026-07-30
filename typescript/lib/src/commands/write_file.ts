@@ -7,7 +7,7 @@ import * as interface_ from "pareto-filesystem-unrestricted-api/modules/unrestri
 
 //dependencies
 import { mkdir as fs_mkdir, createWriteStream as fs_createWriteStream } from "fs"
-import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/unrestricted_path"
+import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/implementation/serializers/path"
 
 export const $$: interface_.write_file = p_.command(($p, on_success, on_error) => {
 
