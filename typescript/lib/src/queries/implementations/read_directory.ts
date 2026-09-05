@@ -1,10 +1,10 @@
-import * as p_ from 'pareto-core/implementation/resource'
-import * as p_r from 'pareto-core/implementation/refiner'
-import * as p_s from 'pareto-core/implementation/serializer'
-import * as p_di from 'pareto-core/interface/data'
-import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
+import * as p_ from 'pareto-core/resource'
+import * as p_r from 'pareto-core/refiner'
+import * as p_s from 'pareto-core/serializer'
+import * as p_di from 'pareto-core/schema'
+import p_change_context from 'pareto-core/refiner/specials/change_context'
 
-import p_unreachable_code_path from 'pareto-core/implementation/transformer/specials/unreachable_code_path'
+import p_unreachable_code_path from 'pareto-core/transformer/specials/unreachable_code_path'
 
 
 //interface

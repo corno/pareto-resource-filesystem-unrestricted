@@ -1,5 +1,5 @@
-import * as p_ from 'pareto-core/implementation/resource'
-import p_change_context from 'pareto-core/implementation/refiner/specials/change_context'
+import * as p_ from 'pareto-core/resource'
+import p_change_context from 'pareto-core/refiner/specials/change_context'
 
 //interface
 import * as interface_ from "pareto-filesystem-unrestricted-api/modules/unrestricted/commands/interfaces"
