@@ -17,7 +17,6 @@ import * as d_xxx from "pareto-filesystem-unrestricted-api/modules/unrestricted/
 //dependencies
 import { readdir as fs_readdir } from "fs"
 import * as ser_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/schemas/path/serializers"
-import * as t_path_to_path from "pareto-filesystem-unrestricted-api/modules/unrestricted/schemas/path/transformers/path"
 
 type ID_Value_Pair<T extends p_di.Value> = {
     readonly 'id': string
@@ -56,12 +55,10 @@ export const $$: interface_.read_directory = p_.query(($p, on_value, on_error) =
                                 ? ['directory', null]
                                 : ['other', null],
                         'context directory': $p.path,
-                        'path': t_path_to_path.create_node_path(
-                            $p.path,
-                            {
-                                'node': $.name,
-                            }
-                        )
+                        'path': {
+                            'context': $p.path,
+                            'node': $.name,
+                        }
                     }
                 }))
                 on_value(
