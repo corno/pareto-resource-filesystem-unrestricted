@@ -50,6 +50,15 @@ export const $$: interface_.make_directory = p_.command(($p, on_success, on_erro
                             if (err.code === 'EACCES' || err.code === 'EPERM') {
                                 return ['permission denied', null]
                             }
+                            if (err.code === 'ENOTDIR') {
+                                throw new Error(`FIXME: implement ENOTDIR error handling (path: ${ser_path.Node_Path($p.path)})`)
+                            }
+                            if (err.code === 'ENOTEMPTY') {
+                                throw new Error(`FIXME: implement ENOTEMPTY error handling (path: ${ser_path.Node_Path($p.path)})`)
+                            }
+                            if (err.code === 'EINVAL') {
+                                throw new Error(`FIXME: implement EINVAL error handling (path: ${ser_path.Node_Path($p.path)})`)
+                            }
                             throw new Error(`unhandled fs.rm error code: ${err.code}`)
                         })
                     })

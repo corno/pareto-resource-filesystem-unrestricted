@@ -37,6 +37,9 @@ export const $$: interface_.remove = p_.command(($p, on_success, on_error) => {
                             if (err.code === 'ENOTEMPTY') {
                                 throw new Error(`FIXME: implement ENOTEMPTY error handling (path: ${ser_path.Context_Path($p.path)})`)
                             }
+                            if (err.code === 'EINVAL') {
+                                throw new Error(`FIXME: implement EINVAL error handling (path: ${ser_path.Context_Path($p.path)})`)
+                            }
                             throw new Error(`unhandled fs.rm error code: ${err.code}`)
                         })
                     })
