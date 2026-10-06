@@ -14,12 +14,19 @@ export const $$: interface_.stat_possible_node = p_.query(($p, on_value, on_erro
         ser_path.Node_Path($p),
         (err, stats) => {
             if (err) {
+                // the node or a part of its context is missing (or a symlink is broken)
                 if (err.code === 'ENOENT') {
-                    on_value(['does not exist', null])
+                    on_value(['does not exist', ['no such entry', null]])
+                // a part of the context is not a directory
+                } else if (err.code === 'ENOTDIR') {
+                    on_value(['does not exist', ['context is not a directory', null]])
                 } else {
                     on_error({
                         'path': $p,
                         'type': p_change_context(null, () => {
+                            if (err.code === 'EACCES' || err.code === 'EPERM') {
+                                return ['permission denied', null]
+                            }
                             throw new Error(`unhandled fs.stat error code: ${err.code}`)
                         })
                     })

@@ -24,6 +24,9 @@ export const $$: interface_.write_file = p_.command(($p, on_success, on_error) =
                         if (err.code === 'EACCES' || err.code === 'EPERM') {
                             return ['permission denied', null]
                         }
+                        if (err.code === 'EEXIST') {
+                            throw new Error(`FIXME implement handling for EEXIST`)
+                        }
                         throw new Error(`unhandled fs.writeFile error code: ${err.code}`)
                     })
                 })
